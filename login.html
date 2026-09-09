@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="main-card">
+{% if success %}
+<div class="text-center"><div class="display-1 text-success">✓</div><h2>Login Successful</h2><p>Welcome, {{ employee.emp_name }}</p><a href="{% url 'welcome' %}" class="btn btn-primary">Continue</a></div>
+{% else %}
+<h2 class="mb-4">Employee Login</h2>
+<form method="POST">{% csrf_token %}
+<div class="mb-3"><label>Emp Mail</label><input type="email" name="mail" class="form-control" required></div>
+<div class="mb-3"><label>Password</label><div class="password-wrapper"><input id="login-password" type="password" name="password" class="form-control" required><button type="button" class="eye-button" data-target="login-password" onclick="togglePassword(this)">◌</button></div></div>
+<button type="submit" class="btn btn-dark w-100">Login</button>
+</form>
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="main-card">
+{% if success %}
+<div class="text-center"><div class="display-1 text-success">✓</div><h2>Sign Up Completed</h2><p class="text-muted">Employee account created successfully.</p><a href="{% url 'login' %}" class="btn btn-primary">Go to Login</a></div>
+{% else %}
+<h2 class="mb-4">Employee Sign Up</h2>
+<form method="POST">{% csrf_token %}
+<div class="row">
+<div class="col-md-6 mb-3"><label>Emp Name</label><input type="text" name="emp_name" class="form-control" value="{{ form_data.emp_name|default:'' }}" required></div>
+<div class="col-md-6 mb-3"><label>Emp ID</label><input type="text" name="emp_id" class="form-control" value="{{ form_data.emp_id|default:'' }}" required></div>
+<div class="col-md-6 mb-3"><label>Role</label><input type="text" name="role" class="form-control" value="{{ form_data.role|default:'' }}" required></div>
+<div class="col-md-6 mb-3"><label>Date of Join</label><input type="date" name="date_of_join" class="form-control" value="{{ form_data.date_of_join|default:'' }}" required></div>
+<div class="col-md-6 mb-3"><label>Branch / Sector</label><select name="branch_sector" class="form-select" required>
+<option value="">Select Sector</option><option>Sector 1</option><option>Sector 2</option><option>Sector 3</option><option>Sector 4</option>
+</select></div>
+<div class="col-md-6 mb-3"><label>Salary</label><input type="number" name="salary" class="form-control" min="0" step="1" value="{{ form_data.salary|default:'' }}" required></div>
+<div class="col-12 mb-3"><label>Mail</label><input type="email" name="mail" class="form-control" value="{{ form_data.mail|default:'' }}" required></div>
+<div class="col-md-6 mb-3"><label>Password</label><div class="password-wrapper"><input id="signup-password" type="password" name="password" class="form-control" required><button type="button" class="eye-button" data-target="signup-password" onclick="togglePassword(this)">◌</button></div></div>
+<div class="col-md-6 mb-3"><label>Confirm Password</label><div class="password-wrapper"><input id="signup-confirm-password" type="password" name="confirm_password" class="form-control" required><button type="button" class="eye-button" data-target="signup-confirm-password" onclick="togglePassword(this)">◌</button></div></div>
+</div>
+<button type="submit" class="btn btn-primary w-100">Create Account</button>
+</form>
+{% endif %}
+</div>
+{% endblock %}

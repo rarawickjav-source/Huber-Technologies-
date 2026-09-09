@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="main-card text-center">
+<h1>Welcome {{ employee.emp_name }}</h1><p class="text-muted">Huber Technologies Employee Portal</p><hr>
+<div class="row text-start">
+<div class="col-md-6 mb-3"><strong>Employee ID</strong><br>{{ employee.emp_id }}</div>
+<div class="col-md-6 mb-3"><strong>Role</strong><br>{{ employee.role }}</div>
+<div class="col-md-6 mb-3"><strong>Sector</strong><br>{{ employee.branch_sector }}</div>
+<div class="col-md-6 mb-3"><strong>Salary</strong><br>₹{{ employee.salary }}</div>
+<div class="col-md-6 mb-3"><strong>Date of Join</strong><br>{{ employee.date_of_join }}</div>
+<div class="col-md-6 mb-3"><strong>Email</strong><br>{{ employee.user.email }}</div>
+</div>
+</div>
+{% endblock %}
